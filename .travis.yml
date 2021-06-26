@@ -1,0 +1,10 @@
+language: node_js
+node_js:
+  - 14
+before_script:
+  - npm install 
+script:
+  - echo Check lint
+  - npm run checklint
+  - echo Test
+  - npm test
