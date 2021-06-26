@@ -4,7 +4,7 @@ node_js:
 before_script:
   - npm install 
 script:
-    - echo Check lint
-    - npm run checklint
-    - echo Test
-    - npm test
+  - echo Check lint
+  - npm run checklint
+  - echo Test
+  - npm test
