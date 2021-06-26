@@ -3,7 +3,7 @@ name: ci-acme
 on: pull_request
 
 jobs:
-  check-app:
+  check-lint:
     runs-on: ubuntu-latest
     steps:
     - name: Setup Node
@@ -16,5 +16,16 @@ jobs:
       run: npm ci
     - name: Check lint
       run: npm run checklint
+  test-app:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Setup Node
+      uses: actions/setup-node@v2
+      with:
+         node-version: '14'
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Install modules
+      run: npm ci
     - name: Test
       run: npm test
