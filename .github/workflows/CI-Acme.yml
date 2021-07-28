@@ -10,14 +10,9 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2  
     - name: Check lint
-      run:  make lint with=docker
+      run:  ls -al
+    - name: Check lint
+      run:  pwd
     - name: Verify image
       run:  docker ps
-  check-test:
-    runs-on: ubuntu-latest
-    container: docker
-    steps:
-    - name: Checkout
-      uses: actions/checkout@v2  
-    - name: Check lint
-      run:  make lint with=docker
+
