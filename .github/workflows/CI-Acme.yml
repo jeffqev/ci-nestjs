@@ -3,16 +3,18 @@ name: ci-acme
 on: pull_request
 
 jobs:
-  check-lint:
+  check-app:
     runs-on: ubuntu-latest
     container: docker
     steps:
     - name: Checkout
       uses: actions/checkout@v2  
+    - name: install make
+      run:  apk add --update make
     - name: Check lint
-      run:  ls -al
-    - name: Check lint
-      run:  pwd
+      run:  make lint with=docker 
+    - name: Check test
+      run:  make lint with=docker 
     - name: Verify image
       run:  docker ps
 
