@@ -5,7 +5,7 @@ all: bootstrap
 
 bootstrap:
 	@if [ "$(with)" = "docker" ]; then\
-		docker run --rm -it --user 1000:1000 -v "$(shell pwd):/$(APP_FOLDER)" -w /$(APP_FOLDER) $(NODE_IMAGE) npm i;\
+		docker run --rm -i --user 1000:1000 -v "$(shell pwd):/$(APP_FOLDER)" -w /$(APP_FOLDER) $(NODE_IMAGE) npm ci;\
 	else \
 		npm ci;\
 	fi\
@@ -13,7 +13,7 @@ bootstrap:
 .PHONY: test
 test:
 	@if [ "$(with)" = "docker" ]; then\
-		docker run --rm -it --user 1000:1000 -v "$(shell pwd):/$(APP_FOLDER)" -w /$(APP_FOLDER) $(NODE_IMAGE) npm testnpm test;\
+		docker run --rm -t --user 1000:1000 -v "$(shell pwd):/$(APP_FOLDER)" -w /$(APP_FOLDER) $(NODE_IMAGE) npm test;\
 	else \
 		npm run test;\
 	fi\
