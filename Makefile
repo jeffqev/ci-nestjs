@@ -14,8 +14,9 @@ test:
 
 lint:
 	@if [ "$(with)" = "docker" ]; then\
-		make devbuild;\
-		docker run -it --rm acme-backend-dev npm run checklint;\
+		make devbuild &&\
+		docker run -it --rm acme-backend-dev npm run checklint &&\
+		exit 0 \
 	else \
 		npm run checklint;\
 	fi\
@@ -30,6 +31,9 @@ fixlint:
 
 devbuild:
 	docker build -t acme-backend-dev --target development .
+
+shortlint:
+	docker run -it --rm acme-backend-dev npm run lint
 
 build:
 	docker build -t acme-backend-prod --target production .

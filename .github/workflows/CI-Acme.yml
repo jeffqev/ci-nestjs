@@ -11,10 +11,12 @@ jobs:
       uses: actions/checkout@v2  
     - name: install make
       run:  apk add --update make
-    - name: Check lint
-      run:  make lint with=docker 
-    - name: Check test
-      run:  make lint with=docker 
+    - name: build image
+      run:  make devbuild
     - name: Verify image
       run:  docker ps
+    - name: Check lint
+      run:  make shortlint
+    - name: Check lint
+      run:  make lint
 
