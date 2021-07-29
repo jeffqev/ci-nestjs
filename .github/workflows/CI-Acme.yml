@@ -8,12 +8,9 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v2  
-    - name: build image
-      run:  make devbuild
-    - name: Verify image
-      run:  docker ps
-    - name: Check lint
-      run:  make shortlint
-    - name: Check lint
-      run:  make lint
-
+    - name: bootstrap 
+      run:  make bootstrap with=docker
+    - name: lint 
+      run:  make lint with=docker
+    - name: test 
+      run:  make test with=docker
