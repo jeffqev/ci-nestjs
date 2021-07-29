@@ -6,15 +6,11 @@ jobs:
   check-app:
     runs-on: ubuntu-latest
     steps:
-    - name: Setup Node
-      uses: actions/setup-node@v2
-      with:
-         node-version: '14'
-    - name: Checkout code
-      uses: actions/checkout@v2
-    - name: Install modules
-      run:  make bootstrap
-    - name: Check lint
-      run:  make lint
-    - name: Test
-      run:  make test
+    - name: Checkout
+      uses: actions/checkout@v2  
+    - name: bootstrap 
+      run:  make bootstrap with=docker
+    - name: lint 
+      run:  make lint with=docker
+    - name: test 
+      run:  make test with=docker
