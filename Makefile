@@ -27,8 +27,7 @@ lint:
 
 fixlint:
 	@if [ "$(with)" = "docker" ]; then\
-		make devbuild;\
-		docker run --rm -it --user 1000:1000 -v "$(shell pwd):/$(APP_FOLDER)" -w /$(APP_FOLDER) $(NODE_IMAGE)npm run lint;\
+		docker run --rm -t --user 1000:1000 -v "$(shell pwd):/$(APP_FOLDER)" -w /$(APP_FOLDER) $(NODE_IMAGE)npm run lint;\
 	else \
 		npm run lint;\
 	fi\
