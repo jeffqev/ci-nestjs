@@ -5,7 +5,7 @@ all: bootstrap
 
 bootstrap:
 	@if [ "$(with)" = "docker" ]; then\
-		docker run --rm -i -v "$(shell pwd):/$(APP_FOLDER)" -w /$(APP_FOLDER) $(NODE_IMAGE) npm ci;\
+		docker run --rm -t -v "$(shell pwd):/$(APP_FOLDER)" -w /$(APP_FOLDER) $(NODE_IMAGE) npm ci;\
 	else \
 		npm ci;\
 	fi\
@@ -20,7 +20,7 @@ test:
 
 lint:
 	@if [ "$(with)" = "docker" ]; then\
-		docker run --rm -i --user 1000:1000 -v "$(shell pwd):/$(APP_FOLDER)" -w /$(APP_FOLDER) $(NODE_IMAGE) npm run checklint;\
+		docker run --rm -t --user 1000:1000 -v "$(shell pwd):/$(APP_FOLDER)" -w /$(APP_FOLDER) $(NODE_IMAGE) npm run checklint;\
 	else \
 		npm run checklint;\
 	fi\
