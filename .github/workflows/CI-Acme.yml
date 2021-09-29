@@ -4,7 +4,7 @@ on: pull_request
 
 jobs:
   check-app:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
     - name: Setup Node
       uses: actions/setup-node@v2
