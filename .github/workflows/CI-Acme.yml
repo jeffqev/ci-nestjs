@@ -1,4 +1,4 @@
-name: ci-acme
+name: ci-acme-self-hosted
 
 on: pull_request
 
