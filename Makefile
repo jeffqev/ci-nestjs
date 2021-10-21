@@ -1,7 +1,14 @@
+override NODE_IMAGE = node:14.15.1 
+override APP_FOLDER = app
+
 all: bootstrap
 
 bootstrap:
-	npm ci
+	@if [ "$(with)" = "docker" ]; then\
+		docker run --rm -t -v "$(shell pwd):/$(APP_FOLDER)" -w /$(APP_FOLDER) $(NODE_IMAGE) npm ci;\
+	else \
+		npm ci;\
+	fi
 
 .PHONY: test
 test:
